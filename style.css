@@ -44,13 +44,24 @@ body, html {
 
 h1 {
   font-size: 2rem;
+  font-family: 'Courier New', monospace; /* font code */
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-p {
+p#typing-text {
   font-size: 1rem;
+  max-width: 600px;
+  font-family: 'Courier New', monospace; /* font code */
+  white-space: pre-wrap;
+  border-right: 2px solid #ffffff;
+  animation: blink 0.75s step-end infinite;
   margin-bottom: 20px;
-  max-width: 400px;
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
 }
 
 .social-links a {
@@ -63,6 +74,9 @@ p {
   border-radius: 25px;
   text-decoration: none;
   transition: 0.3s;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .social-links a:hover {
@@ -74,9 +88,11 @@ p {
   h1 {
     font-size: 1.5rem;
   }
-  p {
+
+  p#typing-text {
     font-size: 0.95rem;
   }
+
   .profile-pic {
     width: 100px;
     height: 100px;
