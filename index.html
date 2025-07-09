@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naufal Faisa</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="assets\videos\bocchi-background-2k.mp4" type="video/mp4">
+        Browser kamu tidak mendukung video latar belakang.
+    </video>
+
+    <div class="content">
+        <img src="assets\image\lain-icon.jpeg" alt="Foto Profil" class="profile-pic" />
+        <h1>Naufal Faisa</h1>
+        <p>Hi! I'm a beginner developer learning to build creative projects with Python, web, and Telegram bots.</p>
+        <div class="social-links">
+            <a href="https://instagram.com/naufalfaisa_">instagram</a>
+            <a href="https://github.com/naufalfaisa">GitHub</a>
+            <a href="https://facebook.com/naufalfaisa17">Facebook</a>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('bg-video');
+        video.addEventListener('ended', () => {
+            video.play();
+        });
+    </script>
+</body>
+</html>
