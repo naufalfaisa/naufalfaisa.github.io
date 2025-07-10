@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +11,89 @@ body, html {
   overflow: hidden;
 }
 
+/* Loading Screen Styles */
+#anime-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 26, 46, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+  backdrop-filter: blur(3px);
+}
+
+.anime-character {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 3px solid white;
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
+  background: none;
+}
+
+.anime-character::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('assets/image/loading.gif') center/cover no-repeat;
+}
+
+.loading-text {
+  color: white;
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  margin-top: 20px;
+  animation: pulse 1.5s infinite;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 10px;
+  background-color: rgba(22, 33, 62, 0.7);
+  border-radius: 5px;
+  margin-top: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #e94560, #ff6b81);
+  transition: width 0.3s ease;
+  border-radius: 5px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; text-shadow: 0 0 5px rgba(233, 69, 96, 0.7); }
+  50% { opacity: 0.7; text-shadow: 0 0 10px rgba(233, 69, 96, 0.9); }
+}
+
+/* Content Visibility During Loading */
+body.loading .content {
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+body.loaded .content {
+  opacity: 1;
+  transition: opacity 0.8s ease 0.2s;
+}
+
+/* Background Video Styles */
 #bg-video {
   position: fixed;
   top: 0;
@@ -22,6 +106,7 @@ body, html {
   filter: brightness(0.5);
 }
 
+/* Main Content Styles */
 .content {
   position: relative;
   height: 100%;
@@ -32,6 +117,7 @@ body, html {
   color: white;
   text-align: center;
   padding: 20px;
+  transition: opacity 0.8s ease;
 }
 
 .profile-pic {
@@ -40,23 +126,27 @@ body, html {
   border-radius: 50%;
   border: 3px solid white;
   margin-bottom: 20px;
+  object-fit: cover;
 }
 
 h1 {
   font-size: 2rem;
-  font-family: 'Courier New', monospace; /* font code */
+  font-family: 'Courier New', monospace;
   font-weight: bold;
   margin-bottom: 10px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* Typing Text Effect */
 p#typing-text {
   font-size: 1rem;
   max-width: 600px;
-  font-family: 'Courier New', monospace; /* font code */
+  font-family: 'Courier New', monospace;
   white-space: pre-wrap;
   border-right: 2px solid #ffffff;
   animation: blink 0.75s step-end infinite;
   margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 @keyframes blink {
@@ -64,8 +154,17 @@ p#typing-text {
   50% { border-color: white; }
 }
 
+/* Social Links Styles */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 500px;
+}
+
 .social-links a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin: 8px;
   padding: 10px 20px;
   color: white;
@@ -73,17 +172,25 @@ p#typing-text {
   border: 1px solid white;
   border-radius: 25px;
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .social-links a:hover {
   background-color: white;
-  color: black;
+  color: #1a1a2e;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+.social-links i {
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+
+/* Responsive Styles */
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 1.5rem;
@@ -91,10 +198,59 @@ p#typing-text {
 
   p#typing-text {
     font-size: 0.95rem;
+    max-width: 90%;
   }
 
   .profile-pic {
     width: 100px;
     height: 100px;
   }
+  
+  /* Loading screen mobile adjustments */
+  .anime-character {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .loading-text {
+    font-size: 16px;
+  }
+  
+  .progress-bar {
+    width: 180px;
+  }
+
+  .social-links {
+    align-items: center;
+  }
+
+  .social-links a {
+    width: 80%;
+    justify-content: center;
+  }
+}
+
+/* Additional Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Animation for loading completion */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body.loaded .content {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Ensure loading screen stays on top */
+#anime-loading {
+  z-index: 9999;
 }

@@ -5,8 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Naufal Faisa</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div id="anime-loading">
+    <div class="anime-character"></div>
+    <div class="loading-text">Memuat...</div>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+  </div>
+
   <video autoplay muted loop id="bg-video">
     <source src="assets/videos/bocchi-background-2k.mp4" type="video/mp4" />
     Browser kamu tidak mendukung video latar belakang.
@@ -15,14 +25,25 @@
   <div class="content">
     <img src="assets/image/lain-icon.jpeg" alt="Foto Profil" class="profile-pic" />
     <h1>Naufal Faisa</h1>
-    <p id="typing-text"></p> <!-- tempat teks muncul dengan efek ketikan -->
+    <p id="typing-text"></p>
     <div class="social-links">
-      <a href="https://instagram.com/naufalfaisa_">Instagram</a>
-      <a href="https://github.com/naufalfaisa">GitHub</a>
-      <a href="https://facebook.com/naufalfaisa17">Facebook</a>
+      <a href="https://instagram.com/naufalfaisa_" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="https://github.com/naufalfaisa" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+      <a href="https://facebook.com/naufalfaisa17" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="http://blog.naufalfaisa.my.id" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-blog"></i> Blog
+      </a>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="scripts/loading.js"></script>
+  <script src="scripts/typing.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
